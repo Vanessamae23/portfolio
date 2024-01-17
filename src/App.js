@@ -1,24 +1,63 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { ThemeProvider, createTheme } from "@mui/material";
+import Home from "./pages/Home";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import BlogList from "./pages/BlogList";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#2a9461",
+    },
+  },
+});
+
+theme.typography.h2 = {
+  fontSize: '1.8rem',
+  [theme.breakpoints.up('sm')]: {
+    fontSize: '2.8rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '3.8rem',
+  },
+  [theme.breakpoints.up('lg')]: {
+    fontSize: '5.8rem',
+  },
+};
+
+theme.typography.h6 = {
+  fontSize: '1.2rem',
+  [theme.breakpoints.up('sm')]: {
+    fontSize: '1.2rem',
+  },
+  [theme.breakpoints.up('md')]: {
+    fontSize: '1.5rem',
+  },
+  [theme.breakpoints.up('lg')]: {
+    fontSize: '1.8rem',
+  },
+};
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider theme={theme}>
+      <div
+        style={{
+          width: "100%",
+          minHeight: "min-content",
+          height: "100vh",
+          backgroundColor: "#fff",
+        }}
+      >
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/blogs" element={<BlogList />} />
+          </Routes>
+        </BrowserRouter>
+      </div>
+    </ThemeProvider>
   );
 }
 
