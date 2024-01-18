@@ -20,8 +20,8 @@ const HackathonCard = ({project}) => {
         subheader={project.type}
       />
       <CustomMobileStepper project={project} />
-      <CardContent style={{ height: "100px"}}>
-        <Typography variant="body2" color="text.secondary">
+      <CardContent style={{ minHeight: "100px"}}>
+        <Typography variant="body2">
           {project.desc}
         </Typography>
       </CardContent>
